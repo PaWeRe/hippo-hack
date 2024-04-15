@@ -1,11 +1,11 @@
 # Hippo - Your 24/7 medical assistant.
+<img width="1429" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/dfe18e24-8311-4720-a2c1-c54525dd55d9">
 
 During the AI for good Hackathon 2024 at EPFL we (i.e. Guillaume Krafft, Theo Gieruc, Axel Collet, Patrick Remerscheid) prototyped a medical assistant as part of an automated, non-expert (i.e. no Radiologists or Clinicians on-site for cost reduction), decentralized imaging center network.
 
 <img width="1510" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/a697f15f-4a4c-48f0-a287-367d84518f9b">
 
 ---
-<img width="1429" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/dfe18e24-8311-4720-a2c1-c54525dd55d9">
 
 ### Midterm vision (maybe feasible)
 "Getting a medical scan as easy as getting a haircut". Imagine your routine cancer screening at a local imaging center max 40min away, as follows:
