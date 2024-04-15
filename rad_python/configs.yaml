@@ -1,0 +1,3 @@
+# Non-sensitive configuration values only
+# Sensitive values should be in .env file
+MODEL: "mistral-large-latest"
