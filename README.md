@@ -16,8 +16,6 @@ During the AI for good Hackathon 2024 at EPFL we (i.e. Guillaume Krafft, Theo Gi
 
 App runs at `http://localhost:7860`
 
-⚠️ **Never commit your `.env` file!** It contains sensitive API keys.
-
 <img width="1510" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/a697f15f-4a4c-48f0-a287-367d84518f9b">
 
 ---
