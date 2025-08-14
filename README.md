@@ -1,7 +1,22 @@
 # Hippo - Your 24/7 medical assistant.
 <img width="1429" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/dfe18e24-8311-4720-a2c1-c54525dd55d9">
 
-During the AI for good Hackathon 2024 at EPFL we (i.e. Guillaume Krafft, Theo Gieruc, Axel Collet, Patrick Remerscheid) prototyped a medical assistant as part of an automated, non-expert (i.e. no Radiologists or Clinicians on-site for cost reduction), decentralized imaging center network.
+During the AI for good Hackathon 2024 at EPFL we (i.e. Guillaume Krafft, Theo Gieruc, Axel Collet, Patrick Remerscheid) prototyped a medical assistant as part of an automated, non-clinician (i.e. no Radiologists on-site for cost reduction), decentralized imaging center network.
+
+## 🚀 Quick Setup
+
+1. **Install [uv](https://docs.astral.sh/uv/) package manager**
+
+2. **Setup**
+   ```bash
+   git clone <your-repo-url> && cd hippo-hack
+   cp .env.example .env  # Edit .env with your Mistral API key
+   uv run python rad_python/main.py
+   ```
+
+App runs at `http://localhost:7860`
+
+⚠️ **Never commit your `.env` file!** It contains sensitive API keys.
 
 <img width="1510" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/a697f15f-4a4c-48f0-a287-367d84518f9b">
 
