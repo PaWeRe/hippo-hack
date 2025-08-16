@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "env_file": ".env",
+  "graphs": {
+    "medical_agent": "src.agent.graph:graph"
+  }
+}
