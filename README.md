@@ -1,39 +1,149 @@
-# Hippo - Your 24/7 medical assistant.
-<img width="1429" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/dfe18e24-8311-4720-a2c1-c54525dd55d9">
+# Hippo - AI Medical Assistant with Agentic Workflow
 
-During the AI for good Hackathon 2024 at EPFL we (i.e. Guillaume Krafft, Theo Gieruc, Axel Collet, Patrick Remerscheid) prototyped a medical assistant as part of an automated, non-clinician (i.e. no Radiologists on-site for cost reduction), decentralized imaging center network.
+**Intelligent medical assistant powered by Mistral models and LangGraph agentic workflow, combining computer vision (DenseNet-121) with hybrid RAG knowledge retrieval for personalized X-ray interpretation and patient guidance.**
 
-## 🚀 Quick Setup
+🏆 **3rd Place Winner** - AI for Good Hackathon 2024 at EPFL (Guillaume Krafft, Theo Gieruc, Axel Collet, Patrick Remerscheid)
 
-1. **Install [uv](https://docs.astral.sh/uv/) package manager**
+## 🎯 Vision: Democratizing Medical Imaging Access
 
-2. **Setup**
-   ```bash
-   git clone <your-repo-url> && cd hippo-hack
-   cp .env.example .env  # Edit .env with your Mistral API key
-   uv run python rad_python/main.py
-   ```
-
-App runs at `http://localhost:7860`
-
-<img width="1510" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/a697f15f-4a4c-48f0-a287-367d84518f9b">
+Automated, non-clinician imaging centers for cost-effective cancer screening and prevention - making quality medical imaging as accessible as getting a haircut.
 
 ---
 
-### Midterm vision (maybe feasible)
-"Getting a medical scan as easy as getting a haircut". Imagine your routine cancer screening at a local imaging center max 40min away, as follows:
+## 🚀 Demo
 
-1. Walk in and get scanner assigned
-2. Key personnel (e.g. nurse) does minimal preparation for scanner (security, no ferromagnetic stuff etc.)
-3. Get Scanned
-4. Walk out
+![Hippo Demo](assets/demo_hippo_radiologist.gif)
 
-In around 45min you are done with whatever routine check-up you wanted to do. You will instantly receive your diagnosis and any proposed follow up steps via phone, delivered via Hippo in an understandable and personal way.
-The new diagnosis will be integrated and checked against your entire medical history by Hippo and counter measures to fight any upcoming symptoms can be communicated and implemented immediately in your day to day (e.g. eat more healthy, exercise more).
-Any wearables that you might wear can be connected to Hippo and can help you track daily progress and vital signs etc.
+## 🏗️ Agentic Workflow Architecture
 
-<img width="1392" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/1e6c63f9-281b-45f7-9bfe-402460b754e7">
+![Hippo Agentic Workflow](assets/hippo_agentic_workflow_flowchart.jpeg)
 
-### Longterm Vision (very speculative, let's go completely crazy for a minute)
-"Knowing 24/7 what is going on in your body both physically and mentally" - Can Scanners get cheaper? Will there be a future with minimalistic scanners that you can wear or that everybody can have in their homes? How will medical imaging evolve? Will it stay relevant or will at some point everything be visible through blood analysis or DNA modificaitons? Can we have an agent that can track your whole life in a privacy-preserving and trustworthy way?
+**Core Innovation**: LangGraph orchestrates intelligent tool selection, combining medical-grade computer vision with hybrid knowledge retrieval (local expert guidelines + real-time web search) for evidence-based patient care.
 
+---
+
+## ⚡ Quick Setup
+
+### Prerequisites
+- Install [uv](https://docs.astral.sh/uv/) package manager
+- **📋 See [CONFIGURATION.md](CONFIGURATION.md) for complete setup guide and all required API keys**
+
+
+---
+
+## 🎮 Running the Application
+
+### Option 1: Gradio Frontend (Complete User Experience)
+```bash
+uv run gradio_frontend.py
+```
+**Access at**: `http://localhost:7860`
+- **Technician Interface**: Upload & analyze X-ray images
+- **Patient Interface**: Interactive AI guidance and Q&A
+
+### Option 2: LangGraph Studio (Development & Testing)
+```bash
+uv run start_langgraph.py
+```
+**Access at**: `http://127.0.0.1:2024`
+- Interactive agent testing with debugging tools
+- Real-time conversation tracing
+- Hot reload for development
+
+#### 🧪 Example LangGraph Studio Test
+
+**Try this prompt to see hybrid retrieval in action:**
+```
+Can you tell me about the latest research and current treatment protocols for pneumothorax? I want both expert guidelines and recent developments.
+```
+
+**With X-ray results:**
+```json
+{
+    "Cardiomegaly": 0.85,
+    "Pneumonia": 0.72,
+    "Pleural_Effusion": 0.68,
+    "Normal": 0.15,
+    "Pneumothorax": 0.12
+}
+```
+
+**Patient context:**
+```json
+{"name": "Test Patient", "age": 45}
+```
+
+This will trigger both local FAISS search (expert guidelines) and web search (latest research), demonstrating the intelligent hybrid retrieval system.
+
+---
+
+## 🧪 Testing & Validation
+
+### Run Agent Tests
+```bash
+# Test complete X-ray interpretation workflow
+uv run python tests/test_medical_agent.py
+
+# Compare LLM vs LLM+RAG performance
+uv run python tests/test_rag_comparison.py
+```
+
+### Key Test Scenarios
+- **X-ray Analysis**: Automated pathology detection and interpretation
+- **Medical Q&A**: Patient questions with contextual responses  
+- **RAG Effectiveness**: Knowledge retrieval quality assessment
+- **Tool Orchestration**: LangGraph agent decision-making
+
+---
+
+## 🔧 Technical Stack
+
+- **🧠 Agent**: LangGraph + Mistral-large-latest
+- **🔍 Computer Vision**: torchxrayvision DenseNet-121
+- **📚 Knowledge**: FAISS vector store + Tavily web search
+- **🛠️ Tools**: 4 specialized medical functions
+- **💾 State**: Efficient runtime context management
+
+### Core Agentic Tools
+1. `extract_top_findings` - X-ray pathology analysis
+2. `retrieve_medical_knowledge` - Hybrid knowledge search
+3. `generate_recommendations` - Evidence-based care guidance
+4. `get_patient_information` - Personalized demographics
+
+---
+
+## 🏥 Workflow: From Image to Insights
+
+1. **📸 Upload** → DenseNet-121 analyzes X-ray for 14 pathologies
+2. **🤖 Agent Routing** → LLM selects appropriate tools based on query
+3. **🔍 Smart Retrieval** → Local guidelines + web research for comprehensive knowledge
+4. **👤 Personalization** → Patient demographics inform recommendations
+5. **💬 Natural Response** → Clear, actionable medical guidance
+
+---
+
+## 🌟 Vision: Transforming Healthcare Access
+
+<img width="1429" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/dfe18e24-8311-4720-a2c1-c54525dd55d9">
+
+### Midterm Vision: Accessible Medical Imaging
+**"Getting a medical scan as easy as getting a haircut"**
+
+Imagine routine cancer screening at a local imaging center within 40 minutes from your home:
+
+1. **Walk in** → Get scanner assigned instantly
+2. **Minimal prep** → Nurse handles basic safety protocols  
+3. **Get scanned** → Automated imaging process
+4. **Walk out** → Complete in ~45 minutes
+
+**Instant results**: Receive your diagnosis and follow-up steps via phone, delivered by Hippo in clear, personal language. Your results integrate with your complete medical history for comprehensive care recommendations and daily lifestyle guidance.
+
+<img width="1392" alt="Future Healthcare Vision" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/1e6c63f9-281b-45f7-9bfe-402460b754e7">
+
+### Validation & Safety Considerations
+Critical questions remain: Is more screening truly beneficial? How do we ensure AI accuracy? Our approach leverages the fact that 90% of screenings are negative - we can deploy hyper-sensitive systems with high false-positive rates, flagged for expert human review. As experts provide feedback on these cases (who would be seen regardless), the system gradually becomes less conservative through continuous learning, ultimately reducing hospital overcrowding by ensuring only genuinely ill patients require advanced care.
+
+### Long-term Vision: Continuous Health Monitoring
+**"24/7 awareness of your body's physical and mental state"**
+
+Future possibilities: Wearable scanners, home-based imaging, continuous biometric integration. Can we create privacy-preserving agents that track and optimize your entire health journey in real-time?
