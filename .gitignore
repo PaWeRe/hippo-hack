@@ -55,3 +55,4 @@ Thumbs.db
 *.pth
 *.h5
 *.pkl
+.langgraph_api/
