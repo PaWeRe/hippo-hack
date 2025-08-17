@@ -8,30 +8,40 @@
 
 Automated, non-clinician imaging centers for cost-effective cancer screening and prevention - making quality medical imaging as accessible as getting a haircut.
 
----
-
 ## 🚀 Demo
 
 ![Hippo Demo](assets/demo_hippo_radiologist.gif)
 
-## 🏗️ Agentic Workflow Architecture
+1. **🏥 Technician Interface** - Patient gets scanned, technician manages results distribution, DenseNet-121 provides instant X-ray analysis
+2. **👤 Patient Interface** - Patient reviews results and chats with HippoChat AI assistant using personal context, expert guidelines and web search
+3. **🛠️ Development Environment** - Complete workflow testing and debugging in LangGraph Studio
+
+
+## 🏗️ Agentic Workflow & Technical Stack
 
 ![Hippo Agentic Workflow](assets/hippo_agentic_workflow_flowchart.jpeg)
 
-**Core Innovation**: LangGraph orchestrates intelligent tool selection, combining medical-grade computer vision with hybrid knowledge retrieval (local expert guidelines + real-time web search) for evidence-based patient care.
+**Core Innovation**: LangGraph orchestrates intelligent tool selection, combining medical-grade computer vision with hybrid knowledge retrieval for evidence-based patient care.
 
----
+### Technical Components
+- **🧠 Agent**: LangGraph + Mistral-large-latest
+- **🔍 Computer Vision**: torchxrayvision DenseNet-121
+- **📚 Knowledge**: FAISS vector store + Tavily web search
+- **🛠️ Tools**: 4 specialized medical functions
+- **💾 State**: Efficient runtime context management
 
-## ⚡ Quick Setup
+### Core Agentic Tools
+1. `extract_top_findings` - X-ray pathology analysis
+2. `retrieve_medical_knowledge` - Hybrid knowledge search
+3. `generate_recommendations` - Evidence-based care guidance
+4. `get_patient_information` - Personalized demographics
+
+
+## 🎮 Running the Application
 
 ### Prerequisites
 - Install [uv](https://docs.astral.sh/uv/) package manager
 - **📋 See [CONFIGURATION.md](CONFIGURATION.md) for complete setup guide and all required API keys**
-
-
----
-
-## 🎮 Running the Application
 
 ### Option 1: Gradio Frontend (Complete User Experience)
 ```bash
@@ -75,7 +85,6 @@ Can you tell me about the latest research and current treatment protocols for pn
 
 This will trigger both local FAISS search (expert guidelines) and web search (latest research), demonstrating the intelligent hybrid retrieval system.
 
----
 
 ## 🧪 Testing & Validation
 
@@ -94,33 +103,9 @@ uv run python tests/test_rag_comparison.py
 - **RAG Effectiveness**: Knowledge retrieval quality assessment
 - **Tool Orchestration**: LangGraph agent decision-making
 
----
 
-## 🔧 Technical Stack
 
-- **🧠 Agent**: LangGraph + Mistral-large-latest
-- **🔍 Computer Vision**: torchxrayvision DenseNet-121
-- **📚 Knowledge**: FAISS vector store + Tavily web search
-- **🛠️ Tools**: 4 specialized medical functions
-- **💾 State**: Efficient runtime context management
 
-### Core Agentic Tools
-1. `extract_top_findings` - X-ray pathology analysis
-2. `retrieve_medical_knowledge` - Hybrid knowledge search
-3. `generate_recommendations` - Evidence-based care guidance
-4. `get_patient_information` - Personalized demographics
-
----
-
-## 🏥 Workflow: From Image to Insights
-
-1. **📸 Upload** → DenseNet-121 analyzes X-ray for 14 pathologies
-2. **🤖 Agent Routing** → LLM selects appropriate tools based on query
-3. **🔍 Smart Retrieval** → Local guidelines + web research for comprehensive knowledge
-4. **👤 Personalization** → Patient demographics inform recommendations
-5. **💬 Natural Response** → Clear, actionable medical guidance
-
----
 
 ## 🌟 Vision: Transforming Healthcare Access
 
@@ -132,7 +117,7 @@ uv run python tests/test_rag_comparison.py
 Imagine routine cancer screening at a local imaging center within 40 minutes from your home:
 
 1. **Walk in** → Get scanner assigned instantly
-2. **Minimal prep** → Nurse handles basic safety protocols  
+2. **Minimal prep** → Technical operator handles basic safety protocols  
 3. **Get scanned** → Automated imaging process
 4. **Walk out** → Complete in ~45 minutes
 
@@ -141,7 +126,7 @@ Imagine routine cancer screening at a local imaging center within 40 minutes fro
 <img width="1392" alt="Future Healthcare Vision" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/1e6c63f9-281b-45f7-9bfe-402460b754e7">
 
 ### Validation & Safety Considerations
-Critical questions remain: Is more screening truly beneficial? How do we ensure AI accuracy? Our approach leverages the fact that 90% of screenings are negative - we can deploy hyper-sensitive systems with high false-positive rates, flagged for expert human review. As experts provide feedback on these cases (who would be seen regardless), the system gradually becomes less conservative through continuous learning, ultimately reducing hospital overcrowding by ensuring only genuinely ill patients require advanced care.
+Critical questions remain: Is more screening truly beneficial? How do we ensure AI accuracy? Our approach leverages the fact that >90% of screenings should be negative - we can deploy AI systems with high false-positive rates in the beginning, flagged for expert human review. As experts provide feedback on these cases (who would be seen regardless), the system gradually becomes less conservative through continuous learning, ultimately reducing hospital overcrowding while increasing access to quality screening.
 
 ### Long-term Vision: Continuous Health Monitoring
 **"24/7 awareness of your body's physical and mental state"**
