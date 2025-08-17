@@ -1,4 +1,4 @@
-# Hippo - AI Medical Assistant with Agentic Workflow
+# Hippo - Intelligent Medical Imaging Assistant
 
 **Intelligent medical assistant powered by Mistral models and LangGraph agentic workflow, combining computer vision (DenseNet-121) with hybrid RAG knowledge retrieval for personalized X-ray interpretation and patient guidance.**
 
@@ -10,7 +10,10 @@ Automated, non-clinician imaging centers for cost-effective cancer screening and
 
 ## 🚀 Demo
 
+**Quick Preview (3x speed):**
 ![Hippo Demo](assets/demo_hippo_radiologist.gif)
+
+**📹 [Watch Full Demo (Normal Speed)](assets/demo_hippo_radiologist.mp4)** - Click to view the complete 5-minute walkthrough at normal speed.
 
 1. **🏥 Technician Interface** - Patient gets scanned, technician manages results distribution, DenseNet-121 provides instant X-ray analysis
 2. **👤 Patient Interface** - Patient reviews results and chats with HippoChat AI assistant using personal context, expert guidelines and web search
@@ -103,11 +106,7 @@ uv run python tests/test_rag_comparison.py
 - **RAG Effectiveness**: Knowledge retrieval quality assessment
 - **Tool Orchestration**: LangGraph agent decision-making
 
-
-
-
-
-## 🌟 Vision: Transforming Healthcare Access
+## 🌟 Hackathon Pitch / Vision: Transforming Access To Routine Medical Screening
 
 <img width="1429" alt="image" src="https://github.com/PaWeRe/hippo-hack/assets/65857685/dfe18e24-8311-4720-a2c1-c54525dd55d9">
 
